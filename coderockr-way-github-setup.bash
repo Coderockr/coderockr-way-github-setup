@@ -96,7 +96,7 @@ Stage: Testing,e616e6
 Status: Blocked,d93f0b
 Status: Duplicated,c5def5
 Status: Impediment,b60205
-Status: Needs,ff8c00
+Status: Needs Fixing,ff8c00
 Type: Bug,fc2929
 Type: Improvement,84b6eb
 Type: New feature,0052cc
