@@ -76,7 +76,12 @@ LABELS='Category: Backend,c2e0c6
 Category: Business/Meetings,0e8a16
 Category: DevOps,fef2c0
 Category: Frontend,bfdadc
+Category: Infrastructure,f0e68c
+Category: Report,40e0d0
 Category: Unit test,ededed
+Level: Easy,48d1cc
+Level: Medium,20b2aa
+Level: Hard,008b8b
 Priority: High,fef2c0
 Priority: Highest,b60205
 Priority: Low,d4c5f9
@@ -84,12 +89,14 @@ Priority: Lowest,ededed
 Priority: Medium,d4c5f9
 Stage: Analysis,e6e6e6
 Stage: Backlog,ededed
+Stage: Cancelled,000000
 Stage: In progress,fbca04
 Stage: Review,0052cc
 Stage: Testing,e616e6
 Status: Blocked,d93f0b
 Status: Duplicated,c5def5
 Status: Impediment,b60205
+Status: Needs Fixing,ff8c00
 Type: Bug,fc2929
 Type: Improvement,84b6eb
 Type: New feature,0052cc
