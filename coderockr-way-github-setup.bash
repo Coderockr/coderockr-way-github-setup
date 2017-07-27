@@ -43,9 +43,9 @@ do
         GITHUB_PASSWORD=${args[$counter + 1]}
         readed_counter=$[$readed_counter + 1]
     elif [[ $i == '--verbose' ]] || [[ $i == '-v' ]]; then
-    VERBOSE=1
+        VERBOSE=1
     else
-    GITHUB_REPO=$i
+        GITHUB_REPO=$i
     fi
 
     readed_counter=$[$readed_counter + 1]
