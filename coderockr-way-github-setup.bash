@@ -14,7 +14,14 @@ Usage:
 }
 
 function github_api {
-    curl -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -sL "https://api.github.com/repos/$GITHUB_REPO/$1" -X "$2" -d "$3"
+    AUTHORIZATION="$GITHUB_USER:$GITHUB_PASSWORD"
+    COMMAND='-u'
+    [ ! -z ${GITHUB_TOKEN+x} ] && {
+        AUTHORIZATION="Authorization: token $GITHUB_TOKEN"
+        COMMAND='-H'
+    }
+
+    curl $COMMAND "$AUTHORIZATION" -sL "https://api.github.com/repos/$GITHUB_REPO/$1" -X "$2" -d "$3"
 }
 
 VERBOSE=0
@@ -36,9 +43,9 @@ do
         GITHUB_PASSWORD=${args[$counter + 1]}
         readed_counter=$[$readed_counter + 1]
     elif [[ $i == '--verbose' ]] || [[ $i == '-v' ]]; then
- 	VERBOSE=1
+    VERBOSE=1
     else
-	GITHUB_REPO=$i
+    GITHUB_REPO=$i
     fi
 
     readed_counter=$[$readed_counter + 1]
@@ -49,16 +56,16 @@ if [ -z "$GITHUB_REPO" ]; then
     read -p "Type your Github repository name (owner/repo_name): " GITHUB_REPO
 fi
 
-if [ -z "$GITHUB_USERNAME" ]; then
+if [ -z "$GITHUB_USERNAME" ] && [ -z $GITHUB_TOKEN ]; then
     read -p "Type your Github username: " GITHUB_USERNAME
 fi
 
-if [ -z "$GITHUB_PASSWORD" ]; then
+if [ -z "$GITHUB_PASSWORD" ] && [ -z $GITHUB_TOKEN ]; then
     read -p "Type your Github password (won't be shown): " -s GITHUB_PASSWORD
     echo;
 fi
 
-if [ -z "$GITHUB_USERNAME" ] || [ -z "$GITHUB_REPO" ]; then
+if [ -z "$GITHUB_USERNAME" ] || [ -z "$GITHUB_REPO" ] && [ -z $GITHUB_TOKEN ]; then
     >&2 echo "There are missing parameters !"
     >&2 printf "$(getHelp)"
     exit 1
@@ -102,7 +109,7 @@ Type: Improvement,84b6eb
 Type: New feature,0052cc
 Type: Sub-task,ededed'
 
-if [[ "$VERBOSE" == 1 ]]; then 
+if [[ "$VERBOSE" == 1 ]]; then
    echo "Removing default labels"
 fi
 
@@ -112,12 +119,12 @@ while read -r label; do
         if [[ ! "$response" == *"Not Found"* ]]; then
             echo "Error removing \"$label\": $response"
         fi
-    elif  [[ "$VERBOSE" == 1 ]]; then 
+    elif  [[ "$VERBOSE" == 1 ]]; then
         echo "Label \"$label\" removed"
     fi
 done <<< "$REMOVE_DEFAULT_LABELS"
 
-if [[ "$VERBOSE" == 1 ]]; then 
+if [[ "$VERBOSE" == 1 ]]; then
     echo "Creating new labels"
 fi
 
@@ -130,7 +137,7 @@ while read -r label; do
         if [[ ! "$response" == *"already_exists"* ]]; then
             >&2 echo "Error on creating: $label_name, response: $response"
         fi
-    elif [[ "$VERBOSE" == 1 ]]; then 
+    elif [[ "$VERBOSE" == 1 ]]; then
          echo "Label \"$label_name\" created"
     fi
 done <<< "$LABELS"
