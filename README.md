@@ -17,9 +17,6 @@ Type your Github username: lucassabreu
 Type your Github password (won't be shown):
 ```
 
-## Using Github Token
-If you're using github token you must set the environment variable `GITHUB_TOKEN`, then the script will ignore and won't ask for your username and password
-
 Or you [install into your machine](#install) and run it directaly setting parameters (or not and it will be asked as shown before):
 
 Usage: `coderockr-way-github-setup -u githubUser -p githubPassword owner/repo`
@@ -29,6 +26,10 @@ Usage: `coderockr-way-github-setup -u githubUser -p githubPassword owner/repo`
     --password, -p  GitHub password
     --verbose, -v   Details process
 ```
+
+Using Github Token
+------------------
+If you're using github token you must set the environment variable `GITHUB_TOKEN`, then the script will ignore and won't ask for your username and password
 
 Install
 -------
