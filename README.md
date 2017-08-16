@@ -27,6 +27,10 @@ Usage: `coderockr-way-github-setup -u githubUser -p githubPassword owner/repo`
     --verbose, -v   Details process
 ```
 
+Using Github Token
+------------------
+If you're using github token you must set the environment variable `GITHUB_TOKEN`, then the script will ignore and won't ask for your username and password
+
 Install
 -------
 
