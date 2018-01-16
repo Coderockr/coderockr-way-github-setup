@@ -74,6 +74,7 @@ fi
 REMOVE_DEFAULT_LABELS='bug
 duplicate
 enhancement
+good%20first%20issue
 help%20wanted
 invalid
 question
