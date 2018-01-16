@@ -14,7 +14,7 @@ Usage:
 }
 
 function github_api {
-    AUTHORIZATION="$GITHUB_USER:$GITHUB_PASSWORD"
+    AUTHORIZATION="$GITHUB_USERNAME:$GITHUB_PASSWORD"
     COMMAND='-u'
     [ ! -z ${GITHUB_TOKEN+x} ] && {
         AUTHORIZATION="Authorization: token $GITHUB_TOKEN"
@@ -74,6 +74,7 @@ fi
 REMOVE_DEFAULT_LABELS='bug
 duplicate
 enhancement
+good%20first%20issue
 help%20wanted
 invalid
 question
