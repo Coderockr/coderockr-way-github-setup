@@ -9,8 +9,7 @@ function getHelp {
     --verbose, -v   Details process
 
 Usage:
-    $0 -u githubUser -p githubPassword owner/repo
-    "
+    $0 -u githubUser -p githubPassword owner/repo\n"
 }
 
 function github_api {
